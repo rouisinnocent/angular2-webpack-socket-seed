@@ -8,7 +8,6 @@ const outputPath = path.resolve(__dirname, 'dist');
 const publicPath = 'http://localhost:' + port + '/dist/';
 const appPath = path.resolve(__dirname, 'src', 'app');
 const indexPath = path.resolve(__dirname, 'src', 'index.html');
-console.log(publicPath);
 
 //Plugins
 var HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -27,37 +26,39 @@ module.exports = {
             '.ts'
         ]
     },
-    loaders: [
-        {
-            test: /\.ts$/,
-            loaders: [
-                'ts-loader',
-                'angular2-template-loader'
-            ]
-        },
-        {
-            test: /\.html$/,
-            loader: 'html-loader'
-        },
-        {
-            test: /\.css$/,
-            loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap')
-        },
-        {
-            test: /\.css$/,
-            exclude: appPath,
-            loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap')
-        },
-        {
-            test: /\.css$/,
-            include: appPath,
-            loader: 'raw'
-        },
-        {
-            test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
-            loader: 'file?name=assets/[name].[hash].[ext]'
-        },
-    ],
+    module: {
+        loaders: [
+            {
+                test: /\.ts$/,
+                loaders: [
+                    'ts-loader',
+                    'angular2-template-loader'
+                ]
+            },
+            {
+                test: /\.html$/,
+                loader: 'html-loader'
+            },
+            {
+                test: /\.css$/,
+                loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap')
+            },
+            {
+                test: /\.css$/,
+                exclude: appPath,
+                loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap')
+            },
+            {
+                test: /\.css$/,
+                include: appPath,
+                loader: 'raw'
+            },
+            {
+                test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
+                loader: 'file?name=assets/[name].[hash].[ext]'
+            },
+        ]
+    },
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({
             name: [
