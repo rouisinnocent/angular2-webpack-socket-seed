@@ -41,11 +41,7 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap')
-            },
-            {
-                test: /\.css$/,
-                exclude: appPath,
+                exclude:appPath,
                 loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap')
             },
             {
