@@ -7,4 +7,4 @@ An Angular2 Webpack seed.
 Run `webpack --watch` then `node server` and go to `localhost:3737`.
 
 #TODO
-    - Add Gulp
+  - Add Gulp
