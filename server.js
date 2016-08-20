@@ -18,5 +18,5 @@ app.get('/', (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log('angular2-webpack-seed: booted on port ' + port);
+    console.log('[SERVER]: booted on port ' + port);
 });

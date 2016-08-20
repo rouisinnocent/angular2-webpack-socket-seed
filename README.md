@@ -4,7 +4,6 @@ An Angular2 Webpack seed.
 
 #USAGE
 
-Run `webpack --watch` in one console, then `node server` in another one and go to `localhost:3737` in your browser.
+Run `node server` in one console, then `webpack --watch` in another one.
 
-#TODO
-  - Add Gulp
+BrowserSync will open up a tab proxying your express server, and will reload the page after every webpack compilation.

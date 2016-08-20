@@ -5,13 +5,15 @@ const path = require('path');
 const config = require('./config.json');
 const port = config.port;
 const outputPath = path.resolve(__dirname, 'dist');
-const publicPath = 'http://localhost:' + port + '/dist/';
+const serverPath = 'http://localhost:' + port;
+const publicPath = serverPath + '/dist/';
 const appPath = path.resolve(__dirname, 'src', 'app');
 const indexPath = path.resolve(__dirname, 'src', 'index.html');
 
 //Plugins
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -66,7 +68,11 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: indexPath
         }),
-        new ExtractTextPlugin('[name].css')
+        new ExtractTextPlugin('[name].css'),
+        new BrowserSyncPlugin({
+            host:'localhost',
+            proxy:serverPath
+        })
     ],
     output: {
         path: outputPath,
