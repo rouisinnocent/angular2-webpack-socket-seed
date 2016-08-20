@@ -1,9 +1,7 @@
-# angular2-webpack-seed
+# ANGULAR2-WEBPACK-SEED
 
 An Angular2 Webpack seed.
 
 #USAGE
 
-Run `node server` in one console, then `webpack --watch` in another one.
-
-Open up the browser-sync proxy of your express server in the specified port (read the console, usually `http://localhost:3000`). It will reload the page after every webpack compilation (in watch mode).
+Run `npm run dev` and a browser tab should popup with the browser-sync server that is proxying the express server and will reload every time webpack compiles (while in watch mode).
