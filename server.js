@@ -1,5 +1,7 @@
 const express = require('express');
 const app = express();
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
 
 const path = require('path');
 const indexPath = path.resolve(__dirname, 'dist', 'index.html');
@@ -17,6 +19,14 @@ app.get('/', (req, res) => {
     res.sendFile(indexPath);
 });
 
-app.listen(port, () => {
+io.on('connection',socket=>{
+    console.log('[SOCKET-SERVER]: Socket connected.');
+    socket.emit('server-init','hi');
+    socket.on('app-component-connect',msg=>{
+        console.log('[SOCKET-SERVER]: Socket says:',msg);
+    });
+});
+
+http.listen(port, () => {
     console.log('[SERVER]: booted on port ' + port);
 });

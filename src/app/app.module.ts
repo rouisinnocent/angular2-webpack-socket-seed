@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 
+import { SocketService } from './services/socket.service';
+
 
 @NgModule({
     imports:[
@@ -13,6 +15,9 @@ import { AppComponent } from './app.component';
     ],
     bootstrap:[
         AppComponent
+    ],
+    providers:[
+        SocketService
     ]
 })
 
